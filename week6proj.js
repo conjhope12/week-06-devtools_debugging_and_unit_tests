@@ -1,125 +1,101 @@
-console.log('lol')
 
-const expect = chai.expect
-const assert = chai.assert
-
-describe('Question 1a: Sorted array of numbers', () => {
-    it ('#should sort an array in ascending order', () => {
-      const arrayOfNumbers = [1, 5, 3, 2, 4]
-      arrayOfNumbers.sort((a, b) => a - b)
-
-      expect(arrayOfNumbers).to.deep.equal([1,2,3,4,5])
-    })
-
-  })
-
-  describe('Question 1b: Wallet equation', () => {
-
-    class Wallet {
-      constructor(startingMoney) {
-        this.money = startingMoney
-      }
-    
-      addMoney(amount) {
-        this.money += amount
-      }
-    
-      removeMoney(amount) {
-        this.money -= amount
-      }
+class Player {
+    constructor(name) {
+        this.hand = [];
+        this.name = name;
     }
-    
-    it ('should have updated wallet balance', () => {
-      
-      let myWallet = new Wallet(100)
-      myWallet.removeMoney(14.99)
-      myWallet.addMoney(3) 
 
-      expect(myWallet.money).to.equal(88.01)
-    })
-  })
+}
 
-  describe('Question 1c: Day of the week calc.', () => {
-    const dayOfTheWeek = (num) => {
-      switch (num) {
-        case 1:
-          return 'Monday'
-          break;
-    
-        case 2:
-          return 'Tuesday'
-          break;
-    
-        case 3:
-          return 'Wednesday'
-          break;
-    
-        case 4:
-          return 'Thursday'
-          break;
-    
-        case 5:
-          return 'Friday'
-          break;
-    
-        case 6:
-          return 'Saturday'
-          break;
-    
-        case 7:
-          return 'Sunday'
-          break;
-    
-          default:
-            console.log('Err. Something went wrong.')
-      }
+class Card {
+    constructor(suit, value) {
+        this.suit = suit;
+        this.value = value;
+    }   
+}
+
+class Deck {
+    constructor() {
+        this.cards = [];
+        this.play();
     }
-    
-    it ('#should tell DOW by num', () => {
-      
-      expect(dayOfTheWeek(3)).to.equal('Wednesday')
-    })
-  })
+    play() {
+      // const cardValue = (num) => {
+//     switch (num) {
+//         case 1:
+//             return '2';
+//             break;
+//         case 2:
+//             return '3';
+//             break;
+//         case 3:
+//             return '4';
+//             break;
+//         case 4:
+//             return '5';
+//             break;
+//         case 5:
+//             return '6';
+//             break;
+//         case 6:
+//             return '7';
+//             break;
+//         case 7:
+//             return '8';
+//             break;
+//         case 8:
+//            return  '9';
+//             break;
+//         case 9:
+//             return '10';
+//             break;
+//         case 10:
+//             return 'Jack';
+//             break;
+//         case 11:
+//             return 'Queen';
+//             break;
+//         case 12:
+//             return 'King';
+//             break;
+//         case 13:
+//             return 'Ace';
+//             break;
+//         default:
+//             console.log('Error')
+//     }
+//}
 
-  describe('Qustion 1d: Only wizards shall pass', () => {
-    const movieCharacters = [
-      {
-        name: 'Howl',
-        isAWizard: true,
-        quote: `You're wearing that hat? After all the magic I used to make your dress pretty?`,
-      },
-      {
-        name: 'Kalcifer',
-        isAWizard: false,
-        quote: `I don't cook! I'm a scary and powerful fire demon!`,
-      },
-      {
-        name: 'Gandalf',
-        isAWizard: true,
-        quote: `You shall not pass!`,
-      },
-      {
-        name: 'Luke Skywalker',
-        isAWizard: false,
-        quote: `May the Force be with you.`,
-      },
-    ]
-    function onlyWizards(arrayOfCharacters) {
-      return arrayOfCharacters.filter((character) => character.isAWizard == true)
+// OR
+
+ // const cardValue = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"];
+
+    for (const suit of cardSuit) {
+        for (const value of cardValue) {
+            this.cards.push(new Card(suit, value));
+        }
+     }
     }
-    
-    it ('#should tell who is a wizard.', () => {
-      
-      expect(onlyWizards(movieCharacters)).to.deep.equal([{
-        name: 'Howl',
-        isAWizard: true,
-        quote: `You're wearing that hat? After all the magic I used to make your dress pretty?`,
-      }, {
-        name: 'Gandalf',
-        isAWizard: true,
-        quote: `You shall not pass!`,
-      },])
-      
-    })
-  })
-  
+
+    shuffle() {
+        // shuffle(cardValue);
+        
+        // shuffle(cardSuit);
+    }
+
+    deal() {
+        return this.cards.pop();
+    }
+}
+
+class War {
+    constructor (player1Name, player2Name) {
+        this.player1 = new Player(player1Name);
+        this.player2 = new Player(player2Name);
+        // this.deck = new Deck();
+    }
+
+    start() {
+        // this.deck.shuffle();
+    }
+}
